@@ -5,12 +5,14 @@
     .login-body
       BackgroundImage
       LoginComponent
+      settings-button(:class='["settings", (!openLogin) ? "hide" : ""]')
 </template>
 
 <script>
 import SettingsWindow from '@/components/SettingsWindow.vue';
 import LoginComponent from '@/components/LoginComponent.vue';
 import BackgroundImage from '@/components/BackgroundImage';
+import SettingsButton from '@/components/SettingsButton';
 import {mapState, mapMutations} from 'vuex'
 
 export default {
@@ -19,6 +21,7 @@ export default {
     BackgroundImage,
     LoginComponent,
     SettingsWindow,
+    SettingsButton
   },
   mounted() {
     setTimeout(() => {
@@ -26,7 +29,7 @@ export default {
     }, 400)
   },
   computed: {
-    ...mapState(['openSettings']),
+    ...mapState(['openSettings', 'openLogin']),
   },
   methods: {
     ...mapMutations(['SET']),
@@ -35,6 +38,16 @@ export default {
 </script>
 
 <style lang="stylus">
+.settings
+  transition .5s
+
+  position absolute
+  right 0
+  bottom 0
+
+  &.hide
+    transform translateX(200px)
+    
 .popover-enter,
 .popover-leave-to 
   opacity 0

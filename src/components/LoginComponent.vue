@@ -25,14 +25,12 @@
               :item='settings.desktop'
               :icon='false'
             )
-        settings-button(class='login-bottom')
 </template>
 
 <script>
   import SettingsWindow from '@/components/SettingsWindow';
   import LoginComponent from '@/components/LoginComponent';
   import SystemButton from '@/components/SystemButton';
-  import SettingsButton from '@/components/SettingsButton';
   import BackgroundImage from '@/components/BackgroundImage';
   import SelectItem from '../components/SelectItem';
   import Icon from '../components/Icon';
@@ -46,8 +44,7 @@
       SettingsWindow,
       SystemButton,
       SelectItem,
-      Icon,
-      SettingsButton
+      Icon
     },
     data() {
       return {
@@ -125,9 +122,9 @@
 .login-menu
   width 15vw
   min-width 30ch
-  height 100vh
+  height 200px
   border-left 2px var(--color-active) solid
-  position relative
+  border-bottom-left-radius 20px
   transition .5s
   position absolute
   right 0
