@@ -46,7 +46,7 @@ export default {
   bottom 70px
 
   &.hide
-    transform translateX(200px)
+    transform translateX(250px)
     
 .popover-enter,
 .popover-leave-to 
