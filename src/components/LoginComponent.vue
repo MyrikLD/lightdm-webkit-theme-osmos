@@ -163,10 +163,7 @@ input
 
 .login-bottom
   background none
-  width 100%
-  position absolute
   bottom 0
   left 0
   margin 0
-  padding 5px 10px
 </style>

@@ -43,7 +43,6 @@
 <style lang='scss' scoped>
 @import "mathsass/dist/_math.scss";
 //vars
-$fg:#ff4081;
 $pi:3.14;
 
 //config
@@ -51,34 +50,19 @@ $menu-items:4;
 $open-distance:110px;
 $opening-angle:$pi - 1.6;
 
-a{
-  color:inherit;
-}
-h1, h2, h3, h4{
-  margin:0;
-  margin-bottom:10px;
-  margin-top:10px;
-}
-h1{
-  font-size:3em;
-}
-%goo{
-  filter:url('#shadowed-goo');
-}
 %ball{
-  background:$fg;
+  background:var(--color-active);
   border-radius:100%;
   $radius: 60px;
   width:$radius;
   height:$radius;
-  margin-left:-40px;
   position:absolute;
-  top:20px;
   color:white;
   text-align:center;
   line-height:$radius;
   transform:translate3d(0,0,0);
   transition:transform ease-out 200ms;
+  cursor:pointer;
 }
 .menu-open{
   display:none;
@@ -128,16 +112,16 @@ h1{
   }
 }
 .menu{
-  @extend %goo;
+  filter:url('#shadowed-goo');
   position:absolute;
-  right: 40px;
-  bottom: 100px;
+  right:90px;
+  bottom:60px;
 }
 
 .menu-item{
   &:hover{
     background:white;
-    color:$fg;
+    color:var(--color-active);
   }
   @for $i from 1 through $menu-items{
     &:nth-child(#{$i+2}){
@@ -173,5 +157,9 @@ h1{
       transform:translate3d(cos($angle)*$open-distance, sin($angle)*$open-distance,0);
     }
   }
+}
+svg{
+  width: 0;
+  height: 0;
 }
 </style>
