@@ -42,8 +42,8 @@ export default {
   transition .5s
 
   position absolute
-  right 0
-  bottom 0
+  right 100px
+  bottom 70px
 
   &.hide
     transform translateX(200px)
