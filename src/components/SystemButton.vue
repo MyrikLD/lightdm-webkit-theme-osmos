@@ -32,12 +32,11 @@
 
 <style lang='stylus'>
 .system-button
-  width 4vmin
-  height 4vmin
-  max-width 35px
-  max-height 35px
+  max-width 50px
+  max-height 50px
   overflow hidden
   svg
-    width 100%
-    height 100%
+    margin-top 20%
+    width 60%
+    height 60%
 </style>

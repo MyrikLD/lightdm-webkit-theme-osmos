@@ -9,25 +9,30 @@
               mode='user'
               :item='settings.user'
               :icon='false')
-            input(type='password' ref='password' v-model='password' placeholder='password' :readonly='logging', :class="{'error': error}")
+            input(
+              type='password' 
+              ref='password' 
+              v-model='password' 
+              placeholder='password' 
+              :readonly='logging'
+              :class="{'error': error}"
+            )
         .login-form_desktop
           icon(mode='desktop' :item='settings.desktop')
           form
             select-item(
               mode='desktop'
               :item='settings.desktop'
-              :icon='false')
-        .login-bottom
-          system-button(type='shutdown')
-          system-button(type='restart')
-          system-button(type='suspend')
-          system-button(type='settings')
+              :icon='false'
+            )
+        settings-button(class='login-bottom')
 </template>
 
 <script>
   import SettingsWindow from '@/components/SettingsWindow';
   import LoginComponent from '@/components/LoginComponent';
   import SystemButton from '@/components/SystemButton';
+  import SettingsButton from '@/components/SettingsButton';
   import BackgroundImage from '@/components/BackgroundImage';
   import SelectItem from '../components/SelectItem';
   import Icon from '../components/Icon';
@@ -41,7 +46,8 @@
       SettingsWindow,
       SystemButton,
       SelectItem,
-      Icon
+      Icon,
+      SettingsButton
     },
     data() {
       return {
@@ -60,6 +66,12 @@
       ...mapGetters(['CURRENT_THEME'])
     },
     mounted() {
+      setTimeout(() => {
+        this.SET({type: 'openLogin', items: true});
+        setTimeout(() => {
+          this.$refs.password.focus();
+        }, 500)
+      }, 400)
       window.addEventListener('keyup', this.keyPress);
     },
     methods: {
@@ -89,7 +101,6 @@
         }
       },
       submit() {
-  
         if (!this.password) {
           return;
         }
@@ -151,13 +162,11 @@ input
     outline none
 
 .login-bottom
+  background none
   width 100%
   position absolute
   bottom 0
   left 0
-  display flex
-  justify-content space-between
-  background var(--color-active)
   margin 0
   padding 5px 10px
 </style>
